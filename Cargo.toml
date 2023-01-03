@@ -1,5 +1,5 @@
 [workspace]
-members = ["tests", "contracts/joyid-lib-demo"]
+members = ["tests", "contracts/joyid-lib-demo", "ckb-lib-joyid"]
 
 [profile.release]
 overflow-checks = true
