@@ -7,3 +7,15 @@ edition = "2021"
 
 [dependencies]
 ckb-testtool = "0.8"
+p256 = "0.11.1"
+rand_core = "0.6.3"
+hex = "0.4"
+base64 = { version = "0.13.0", default_features = false }
+sha2 = {version = "0.10.2", default-features = false}
+keccak-hash = {version = "0.10.0", default-features = false}
+blake2b-rs = "0.2"
+rand = "0.8.5"
+secp256k1 = "0.20.3"
+ckb-system-scripts = "0.5.0"
+merkle-cbt = { version = "0.3.2", default-features = false }
+joyid-smt = {package = "joyid-smt", git = "https://github.com/nervina-labs/joyid-smt", tag = "v0.7.0" }
