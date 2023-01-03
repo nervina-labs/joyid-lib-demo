@@ -1,13 +1,15 @@
 # joyid-lib-demo
 
+The contract demo with joyid dynamic link library
+
 Build contracts:
 
 ``` sh
-capsule build
+make build
 ```
 
 Run tests:
 
 ``` sh
-capsule test
+make test
 ```
