@@ -7,8 +7,19 @@ pub enum Error {
     ItemMissing,
     LengthNotEnough,
     Encoding,
-    // Add customized errors here...
-    MyError,
+    LockArgsInvalid = 5,
+    WitnessLengthError,
+    WitnessModeError,
+    WitnessArgsParseError,
+    Secp256r1SigVerifyError,
+    Secp256k1SigVerifyError = 10,
+    ClientWithoutChallenge,
+    AlgorithmIndexError,
+    CellDepCotaCellError,
+    SMTProofVerifyFailed,
+    CoTADataInvalid = 15,
+
+    LibInternalError = 127,
 }
 
 impl From<SysError> for Error {
@@ -24,3 +35,21 @@ impl From<SysError> for Error {
     }
 }
 
+impl From<i32> for Error {
+    fn from(err: i32) -> Self {
+        match err {
+            5 => Error::LockArgsInvalid,
+            6 => Error::WitnessLengthError,
+            7 => Error::WitnessModeError,
+            8 => Error::WitnessArgsParseError,
+            9 => Error::Secp256r1SigVerifyError,
+            10 => Error::Secp256k1SigVerifyError,
+            11 => Error::ClientWithoutChallenge,
+            12 => Error::AlgorithmIndexError,
+            13 => Error::CellDepCotaCellError,
+            14 => Error::SMTProofVerifyFailed,
+            15 => Error::CoTADataInvalid,
+            _ => Error::LibInternalError,
+        }
+    }
+}

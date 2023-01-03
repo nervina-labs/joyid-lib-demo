@@ -1,37 +1,27 @@
-// Import from `core` instead of from `std` since we are in no-std mode
-use core::result::Result;
-
-// Import heap related library from `alloc`
-// https://doc.rust-lang.org/alloc/index.html
-use alloc::{vec, vec::Vec};
-
-// Import CKB syscalls and structures
-// https://docs.rs/ckb-std/
-use ckb_std::{
-    debug,
-    high_level::{load_script, load_tx_hash},
-    ckb_types::{bytes::Bytes, prelude::*},
-};
-
 use crate::error::Error;
+use ckb_lib_joyid::LibCKBJoyID;
+use ckb_std::ckb_types::{bytes::Bytes, prelude::*};
+use ckb_std::dynamic_loading_c_impl::CKBDLContext;
+use ckb_std::high_level::load_script;
 
+const LOCK_ARGS_LEN: usize = 22;
 pub fn main() -> Result<(), Error> {
-    // remove below examples and write your code here
+    let mut context = unsafe { CKBDLContext::<[u8; 1280 * 1024]>::new() };
+    let lib_joyid = LibCKBJoyID::load(&mut context);
 
-    let script = load_script()?;
-    let args: Bytes = script.args().unpack();
-    debug!("script args is {:?}", args);
+    let joyid_args = load_joyid_data()?;
 
-    // return an error if args is invalid
-    if args.is_empty() {
-        return Err(Error::MyError);
-    }
-
-    let tx_hash = load_tx_hash()?;
-    debug!("tx hash is {:?}", tx_hash);
-
-    let _buf: Vec<_> = vec![0u8; 32];
-
-    Ok(())
+    lib_joyid
+        .verify_joyid_data(&joyid_args)
+        .map_err(|err_code| Error::from(err_code))
 }
 
+fn load_joyid_data() -> Result<[u8; 22], Error> {
+    let args: Bytes = load_script()?.args().unpack();
+    if args.len() != LOCK_ARGS_LEN {
+        return Err(Error::LockArgsInvalid);
+    }
+    let mut joyid_args = [0u8; 22];
+    joyid_args.copy_from_slice(&args);
+    Ok(joyid_args)
+}
