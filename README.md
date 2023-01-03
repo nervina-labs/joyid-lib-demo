@@ -1,6 +1,6 @@
 # joyid-lib-demo
 
-The contract demo with joyid dynamic link library
+The contract demo of joyid dynamic link library(ckb-lib-joyid/build/joyid.so)
 
 Build contracts:
 
