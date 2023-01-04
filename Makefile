@@ -1,9 +1,9 @@
 build:
-	cd contracts && cargo fmt --all
+	cargo fmt --all
 	capsule build
 
 build-release:
-	cd contracts && cargo fmt --all
+	cargo fmt --all
 	capsule build --release
 
 test:
