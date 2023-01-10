@@ -1,22 +1,29 @@
-# [[cells]]
-# name = "my_cell"
-# enable_type_id = false
-# location = { file = "build/release/my_cell" }
-#
-# # reference to on-chain cells
-# [[cells]]
-# name = "genesis_cell"
-# enable_type_id = false
-# location = { tx_hash = "0x71a7ba8fc96349fea0ed3a5c47992e3b4084b031a42264a018e0072e8172e46c", index = 0 }
+[[cells]]
+name = "joyid-lib-demo"
+enable_type_id = true
+location = { file = "${WORK_DIR}/build/release/joyid-lib-demo" }
+
+ [[cells]]
+ name = "joyid-lib"
+ enable_type_id = true
+ location = { file = "${WORK_DIR}/ckb-lib-joyid/build/joyid.so" }
+
+# reference to on-chain cells
+ [[cells]]
+ name = "secp256k1_data"
+ enable_type_id = false
+ # testnet
+ location = { tx_hash = "0x8f8c79eb6671709633fe6a46de93c0fedc9c1b8a6527a18d3983879542635c9f", index = 3 }
  
 
-# # Dep group cells
-# [[dep_groups]]
-# name = "my_dep_group"
-# cells = [
-#   "my_cell",
-#   "genesis_cell"
-# ]
+# Dep group cells
+[[dep_groups]]
+name = "dep_group"
+cells = [
+  "joyid-lib-demo",
+  "joyid-lib",
+  "secp256k1_data",
+]
 
 # # Replace with your own lock if you want to unlock deployed cells.
 # # For example the secp256k1 lock
