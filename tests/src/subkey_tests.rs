@@ -136,9 +136,6 @@ fn sign_tx(
     let mut message = [0u8; 32];
 
     let mut buffer: Vec<u8> = vec![];
-    if is_secp256k1(subkey_error) {
-        buffer.extend(&ETH_PREFIX);
-    }
     buffer.extend(&tx_hash.raw_data());
 
     // digest the first witness
@@ -182,11 +179,19 @@ fn sign_tx(
 
     if is_secp256k1(subkey_error) {
         keccak_256(&buffer, &mut message);
-        let mut message = CKBH256::from(message);
+
+        let mut buf: Vec<u8> = vec![];
+        buf.extend(&ETH_PREFIX);
+        buf.extend(&message);
+
+        let mut sign_data = [0u8; 32];
+        keccak_256(&buf, &mut sign_data);
+
+        let mut sign_data = CKBH256::from(sign_data);
         if subkey_error == SubkeyError::Secp256k1SigVerifyError {
-            message = CKBH256::from_slice(&[240u8; 32]).unwrap();
+            sign_data = CKBH256::from_slice(&[240u8; 32]).unwrap();
         }
-        let signature = privkey.sign_recoverable(&message).expect("sign");
+        let signature = privkey.sign_recoverable(&sign_data).expect("sign");
         let mut sig_vec = signature.serialize();
         let public_key = privkey.pubkey().expect("pubkey");
         let mut pubkey_hash = keccak_160(&public_key.0).to_vec();
