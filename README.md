@@ -7,7 +7,8 @@ A contract demo demonstrate JoyID unlock via dynamic link library joyid.so(ckb-l
 This project contains two crates:
 
 - ckb-lib-joyid - a library helps users do JoyID unlock via dynamic loading, you can reference it in your own project.
-- ckb-lib-demo - a contract demo that demonstrate how to use the ckb-lib-joyid library.
+- contracts/ckb-lib-demo - a contract demo with rust language that demonstrate how to use the ckb-lib-joyid library.
+- contracts/c - a rust contract demo with c language that demonstrate how to use the joyid.so.
 
 ## joyid.so
 
@@ -29,6 +30,12 @@ __attribute__((visibility("default"))) int verify_joyid_data(
 - args_len must be 22
 
 ## Build and Test
+
+Init submodules:
+
+```sh
+git submodule init && git submodule update -r --init
+```
 
 Build contracts:
 
