@@ -1,10 +1,12 @@
 build:
 	cargo fmt --all
 	capsule build
+	cd contracts/c && make via-docker
 
 build-release:
 	cargo fmt --all
 	capsule build --release
+	cd contracts/c && make via-docker
 
 test:
 	cargo fmt --all
