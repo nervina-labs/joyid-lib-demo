@@ -18,6 +18,7 @@
 
 typedef unsigned __int128 uint128_t;
 
+// Copied from ${PROJECT_ROOT}/ckb-lib-joyid/src/code_hashes.rs
 static const uint8_t JOYID_LIB_CODE_HASH[] = {
     143, 111, 95, 5, 139, 142, 119, 35, 99, 203, 78, 144, 101, 102, 131, 195, 49, 95, 11, 88, 40,
     64, 2, 223, 185, 20, 16, 155, 216, 22, 187, 251,
