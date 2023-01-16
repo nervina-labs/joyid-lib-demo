@@ -7,7 +7,11 @@ use std::str::FromStr;
 
 mod helper;
 #[cfg(test)]
+mod native_c_tests;
+#[cfg(test)]
 mod native_tests;
+#[cfg(test)]
+mod subkey_c_tests;
 #[cfg(test)]
 mod subkey_tests;
 
