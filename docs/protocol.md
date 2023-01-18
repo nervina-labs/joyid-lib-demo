@@ -19,15 +19,15 @@ args: <2 byte algorithm index><20 byte public key hash>
 
 ```yml
 Input:
-	capacity
-	lock: joyid-lock
+  capacity
+  lock: joyid-lock
 
 Output:
-	capacity
-	lock: any lock
+  capacity
+  lock: any lock
 
 Witnesses:
-	witness_args.lock = unlock_mode | public_key(_hash, only for secp256k1) | signature | web_authn_msg
+  witness_args.lock = unlock_mode | public_key(_hash, only for secp256k1) | signature | web_authn_msg
   witness_args.output_type = SubKeyUnlockEntries
 ```
 
