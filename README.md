@@ -1,6 +1,6 @@
 # joyid-lib-demo
 
-A contract demo demonstrate JoyID unlock via dynamic link library joyid.so(ckb-lib-joyid/build/joyid.so)
+A contract demo demonstrate JoyID unlock via dynamic link library joyid.so(`ckb-lib-joyid/build/joyid.so`)
 
 [JoyID Lock Script Introduction](./docs/protocol.md)
 
@@ -8,9 +8,9 @@ A contract demo demonstrate JoyID unlock via dynamic link library joyid.so(ckb-l
 
 This project contains two crates:
 
-- ckb-lib-joyid - a library helps users do JoyID unlock via dynamic loading, you can reference it in your own project.
-- contracts/ckb-lib-demo - a contract demo with rust language that demonstrate how to use the ckb-lib-joyid library.
-- contracts/c - a rust contract demo with c language that demonstrate how to use the joyid.so.
+- `ckb-lib-joyid` - a library helps users do JoyID unlock via dynamic loading, you can reference it in your own project.
+- `contracts/ckb-lib-demo` - a contract demo with rust language that demonstrate how to use the ckb-lib-joyid library.
+- `contracts/c` - a rust contract demo with c language that demonstrate how to use the joyid.so.
 
 ## joyid.so
 
