@@ -1,14 +1,16 @@
 # joyid-lib-demo
 
-A contract demo demonstrate JoyID unlock via dynamic link library joyid.so(ckb-lib-joyid/build/joyid.so)
+A contract demo demonstrate JoyID unlock via dynamic link library joyid.so(`ckb-lib-joyid/build/joyid.so`)
 
-**The contract demo deplyment on testnet can be seen in [wiki-testnet-deployment](https://github.com/nervina-labs/joyid-lib-demo/wiki/Testnet-Deployment)**
+[JoyID Lock Script Introduction](./docs/protocol.md)
+
+**The contract demo deployment on testnet can be seen in [wiki-testnet-deployment](https://github.com/nervina-labs/joyid-lib-demo/wiki/Testnet-Deployment)**
 
 This project contains two crates:
 
-- ckb-lib-joyid - a library helps users do JoyID unlock via dynamic loading, you can reference it in your own project.
-- contracts/ckb-lib-demo - a contract demo with rust language that demonstrate how to use the ckb-lib-joyid library.
-- contracts/c - a rust contract demo with c language that demonstrate how to use the joyid.so.
+- `ckb-lib-joyid` - a library helps users do JoyID unlock via dynamic loading, you can reference it in your own project.
+- `contracts/ckb-lib-demo` - a contract demo with rust language that demonstrate how to use the ckb-lib-joyid library.
+- `contracts/c` - a rust contract demo with c language that demonstrate how to use the joyid.so.
 
 ## joyid.so
 
@@ -39,12 +41,12 @@ git submodule init && git submodule update -r --init
 
 Build contracts:
 
-``` sh
+```sh
 make build
 ```
 
 Run tests:
 
-``` sh
+```sh
 make test
 ```
