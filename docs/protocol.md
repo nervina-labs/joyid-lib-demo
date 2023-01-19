@@ -2,7 +2,7 @@
 
 ## Data Structure
 
-### Lock Data Structure
+- Lock Data Structure
 
 ```yml
 code_hash: joyid_contract_type_id
@@ -15,7 +15,7 @@ args: <2 byte algorithm index><20 byte main public key hash>
 | 0x0001          | Secp256r1 for WebAuthn              | `blake2bBytes(64bytes_uncompressed_public_key)[0..20]`    |
 | 0x0002          | Secp256k1 for Ethereum PersonalSign | `keccak256Bytes(64bytes_uncompressed_public_key)[12..32]` |
 
-### Transaction Data Structure
+- Transaction Data Structure
 
 ```yml
 Input:
